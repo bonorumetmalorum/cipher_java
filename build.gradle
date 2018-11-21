@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'govenk.com'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/com.pholser/junit-quickcheck-core
+    testCompile group: 'com.pholser', name: 'junit-quickcheck-core', version: '0.8.1'
+    // https://mvnrepository.com/artifact/com.pholser/junit-quickcheck-generators
+    testCompile group: 'com.pholser', name: 'junit-quickcheck-generators', version: '0.8.1'
+
+}
