@@ -10,7 +10,7 @@ public class StringGenerator extends Generator<String> {
     private static final String SPECIAL_CHARS = ".-\\;:_@[]^/|}{";
     private static final String ALL_MY_CHARS = LOWERCASE_CHARS
             + UPPERCASE_CHARS + NUMBERS + SPECIAL_CHARS;
-    public static final int CAPACITY = 10;
+    public static final int CAPACITY = 40;
 
     public StringGenerator(){
         super(String.class);
