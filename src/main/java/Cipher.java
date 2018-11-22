@@ -19,11 +19,12 @@ public class Cipher {
         Random cryptRandom = new Random(key);
         char[] chars = plaintext.toCharArray();
         char[] encrypted = new char[chars.length];
-        int displace;
+        long displace;
         for(int i = 0; i < chars.length; i++){
             displace = cryptRandom.nextInt(maxVal);
             System.out.println("displaced by: " + displace );
             encrypted[i] = (char)((chars[i] + displace)%maxVal);
+            System.out.println((int)encrypted[i]);
         }
         return new String(encrypted);
     }
@@ -37,6 +38,7 @@ public class Cipher {
             displace = cryptRandom.nextInt(maxVal) ;
             System.out.println("displaced by: " + displace );
             encrypted[i] = (char)((chars[i] - displace)%maxVal);
+            System.out.println((int)encrypted[i]);
         }
         return new String(encrypted);
     }

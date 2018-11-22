@@ -17,5 +17,8 @@ dependencies {
     testCompile group: 'com.pholser', name: 'junit-quickcheck-core', version: '0.8.1'
     // https://mvnrepository.com/artifact/com.pholser/junit-quickcheck-generators
     testCompile group: 'com.pholser', name: 'junit-quickcheck-generators', version: '0.8.1'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
+    testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25'
+
 
 }
