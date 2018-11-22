@@ -4,7 +4,7 @@ import java.util.stream.Stream;
 
 public class Cipher {
 
-    private final int maxVal = Character.MAX_CODE_POINT;
+    private final int maxVal = Character.MAX_VALUE;
 
     private int key;
 
@@ -19,8 +19,11 @@ public class Cipher {
         Random cryptRandom = new Random(key);
         char[] chars = plaintext.toCharArray();
         char[] encrypted = new char[chars.length];
+        int displace;
         for(int i = 0; i < chars.length; i++){
-            encrypted[i] = (char)(chars[i] + (cryptRandom.nextInt() % maxVal));
+            displace = cryptRandom.nextInt(maxVal);
+            System.out.println("displaced by: " + displace );
+            encrypted[i] = (char)((chars[i] + displace)%maxVal);
         }
         return new String(encrypted);
     }
@@ -29,8 +32,11 @@ public class Cipher {
         Random cryptRandom = new Random(key);
         char[] chars = ciphertext.toCharArray();
         char[] encrypted = new char[chars.length];
+        int displace;
         for(int i = 0; i < chars.length; i++){
-            encrypted[i] = (char)(chars[i] - (cryptRandom.nextInt() % maxVal));
+            displace = cryptRandom.nextInt(maxVal) ;
+            System.out.println("displaced by: " + displace );
+            encrypted[i] = (char)((chars[i] - displace)%maxVal);
         }
         return new String(encrypted);
     }
@@ -41,6 +47,7 @@ public class Cipher {
         for(int i = 0; i < ciphertext.length()-1; i+=2){
             char buffChar;
             if(transposeRandom.nextFloat() > threshold){
+                System.out.println("diffused");
                 buffChar = permuted[i];
                 permuted[i] = permuted[i+1];
                 permuted[i+1] = buffChar;
@@ -55,6 +62,7 @@ public class Cipher {
         for(int i = 0; i < ciphertext.length()-1; i+=2){
             char buffChar;
             if(transposeRandom.nextFloat() > threshold){
+                System.out.println("undiffused");
                 buffChar = permuted[i+1];
                 permuted[i+1] = permuted[i];
                 permuted[i] = buffChar;
@@ -70,9 +78,9 @@ public class Cipher {
     }
 
     public String decrypt(String ct){
-        String deconfused = deconfuse(ct);
-        String undiffused = undiffuse(deconfused);
-        return undiffused;
+        String undiffused = undiffuse(ct);
+        String deconfused = deconfuse(undiffused);
+        return deconfused;
     }
 
 
