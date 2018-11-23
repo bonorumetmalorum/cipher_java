@@ -22,9 +22,7 @@ public class Cipher {
         long displace;
         for(int i = 0; i < chars.length; i++){
             displace = cryptRandom.nextInt(maxVal);
-            System.out.println("displaced by: " + displace );
             encrypted[i] = (char)((chars[i] + displace)%maxVal);
-            System.out.println((int)encrypted[i]);
         }
         return new String(encrypted);
     }
@@ -36,9 +34,7 @@ public class Cipher {
         int displace;
         for(int i = 0; i < chars.length; i++){
             displace = cryptRandom.nextInt(maxVal) ;
-            System.out.println("displaced by: " + displace );
             encrypted[i] = (char)((chars[i] - displace)%maxVal);
-            System.out.println((int)encrypted[i]);
         }
         return new String(encrypted);
     }
@@ -49,7 +45,6 @@ public class Cipher {
         for(int i = 0; i < ciphertext.length()-1; i+=2){
             char buffChar;
             if(transposeRandom.nextFloat() > threshold){
-                System.out.println("diffused");
                 buffChar = permuted[i];
                 permuted[i] = permuted[i+1];
                 permuted[i+1] = buffChar;
@@ -64,7 +59,6 @@ public class Cipher {
         for(int i = 0; i < ciphertext.length()-1; i+=2){
             char buffChar;
             if(transposeRandom.nextFloat() > threshold){
-                System.out.println("undiffused");
                 buffChar = permuted[i+1];
                 permuted[i+1] = permuted[i];
                 permuted[i] = buffChar;
