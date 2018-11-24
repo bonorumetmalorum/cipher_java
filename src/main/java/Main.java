@@ -9,7 +9,7 @@ public class Main {
 
         while(run){
             System.out.println("Encrypt (press E) / Decrypt (press D) / Quit (press Q)");
-            if(System.console().readLine().toLowerCase() == "e"){
+            if(System.console().readLine().toLowerCase().equals("e")){
                 System.out.println("please input a seed number");
                 seed = Integer.parseInt(System.console().readLine());
                 System.out.println("please input a threshold number (0.0 - 1.0)");
@@ -20,7 +20,7 @@ public class Main {
                 String encrpted = cipher.encrypt(plaintext);
                 System.out.println("your encrypted text: " + encrpted);
             }
-            else if(System.console().readLine().toLowerCase() == "d"){
+            else if(System.console().readLine().toLowerCase().equals("d")){
                 System.out.println("please input a seed number");
                 seed = Integer.parseInt(System.console().readLine());
                 System.out.println("please input a threshold number (0.0 - 1.0)");
@@ -31,7 +31,7 @@ public class Main {
                 String decrypted = cipher.decrypt(ciphertext);
                 System.out.println("your encrypted text: " + decrypted);
             }
-            else if(System.console().readLine().toLowerCase() == "q"){
+            else if(System.console().readLine().toLowerCase().equals("q")){
                 run = false;
             }
             else{
