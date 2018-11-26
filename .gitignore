@@ -88,5 +88,8 @@ atlassian-ide-plugin.xml
 # ----
 **.log.*
 
+classes
+src/main/java/META-INF/
+
 # oh-my-zsh gradle plugin
 .gradletasknamecache
