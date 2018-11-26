@@ -1,3 +1,5 @@
+//code taken from SubOptimals answer on: https://stackoverflow.com/questions/30211147/junit-quickcheck-generate-string-matching-a-pattern
+
 import com.pholser.junit.quickcheck.generator.GenerationStatus;
 import com.pholser.junit.quickcheck.generator.Generator;
 import com.pholser.junit.quickcheck.random.SourceOfRandomness;
