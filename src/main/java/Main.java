@@ -7,23 +7,24 @@ public class Main {
 
         while(run){
             System.out.println("Encrypt (press E) / Decrypt (press D) / Quit (press Q)");
-            if(System.console().readLine().toLowerCase().equals("e")){
-                System.out.println("please input your text to be encrypted");
-                String plaintext = System.console().readLine();
-                String encrpted = cipher.encrypt(plaintext);
-                System.out.println("your encrypted text: " + encrpted);
-            }
-            else if(System.console().readLine().toLowerCase().equals("d")){
-                System.out.println("please input your text to be decrypted");
-                String ciphertext = System.console().readLine();
-                String decrypted = cipher.decrypt(ciphertext);
-                System.out.println("your encrypted text: " + decrypted);
-            }
-            else if(System.console().readLine().toLowerCase().equals("q")){
-                run = false;
-            }
-            else{
-                System.out.println("invalid option");
+            String in = System.console().readLine().toLowerCase();
+            switch (in) {
+                case "e":
+                    System.out.println("please input your text to be encrypted");
+                    String plaintext = System.console().readLine();
+                    String encrypt = cipher.encrypt(plaintext);
+                    System.out.println("your encrypted text: " + encrypt);
+                    break;
+                case "d":
+                    System.out.println("please input your text to be decrypted");
+                    String ciphertext = System.console().readLine();
+                    String decrypted = cipher.decrypt(ciphertext);
+                    System.out.println("your decrypted text: " + decrypted);
+                    break;
+                case "q": run = false; break;
+
+                default: System.out.println("invalid option"); break;
+
             }
         }
     }

@@ -22,7 +22,7 @@ dependencies {
 }
 
 jar {
-    mainfest { 
-        attributes 'Main-Class': 'Main'
+    manifest {
+        attributes('Main-Class':'Main')
     }
 }
