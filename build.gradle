@@ -26,3 +26,7 @@ jar {
         attributes('Main-Class':'Main')
     }
 }
+
+test{
+
+}
