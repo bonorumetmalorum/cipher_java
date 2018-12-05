@@ -1,4 +1,10 @@
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.stream.Stream;
+
 public class Main {
+
+    static PrintWriter stdout = new PrintWriter(new OutputStreamWriter(System.out, StandardCharsets.UTF_8), true);
 
     public static void main(String[] args) {
         boolean run = true;
@@ -10,21 +16,41 @@ public class Main {
             String in = System.console().readLine().toLowerCase();
             switch (in) {
                 case "e":
-                    System.out.println("please input your text to be encrypted");
-                    String plaintext = System.console().readLine();
-                    String encrypt = cipher.encrypt(plaintext);
-                    System.out.println("your encrypted text: " + encrypt);
+                    System.out.println("please input the filepath to the file to be encrypted");
+                    String filepath = System.console().readLine();
+                    try{
+                        BufferedReader reader = new BufferedReader(new FileReader(filepath));
+                        BufferedWriter writer = new BufferedWriter(new FileWriter("encrypted_input.txt"));
+                        String nextLine;
+                        while((nextLine = reader.readLine()) != null){
+                            writer.write(cipher.encrypt(nextLine) + "\n");
+                        }
+                        reader.close();
+                        writer.close();
+                        stdout.println("your encrypted text was written to: encrypted_input.txt");
+                    }catch(Exception e){
+                        System.out.println("exception: " + e.getMessage());
+                    }
                     break;
                 case "d":
-                    System.out.println("please input your text to be decrypted");
-                    String ciphertext = System.console().readLine();
-                    String decrypted = cipher.decrypt(ciphertext);
-                    System.out.println("your decrypted text: " + decrypted);
+                    System.out.println("please input the filepath to the file to be decrypted");
+                    String filepathEncrypted = System.console().readLine();
+                    try{
+                        BufferedReader reader = new BufferedReader(new FileReader(filepathEncrypted));
+                        BufferedWriter writer = new BufferedWriter(new FileWriter("decrypted_output.txt"));
+                        String nextLine;
+                        while((nextLine = reader.readLine()) != null){
+                            writer.write(cipher.decrypt(nextLine) + "\n");
+                        }
+                        reader.close();
+                        writer.close();
+                        stdout.println("your decrypted text was written to: decrypted_output.txt");
+                    }catch(Exception e){
+                        System.out.println("exception: " + e.getMessage());
+                    }
                     break;
                 case "q": run = false; break;
-
                 default: System.out.println("invalid option"); break;
-
             }
         }
     }
